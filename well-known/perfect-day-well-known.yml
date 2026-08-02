@@ -1,0 +1,66 @@
+generated: '2026-08-02'
+method: probed
+source: live GET probes of https://perfectday.com on 2026-08-02
+note: >-
+  No /.well-known discovery document is served on perfectday.com — every probed path returned 404,
+  and the response bodies are the site's own WordPress HTML 404 page (or the nginx text 404 for
+  paths that never reach WordPress), not machine-readable documents. Recorded for auditability. No
+  SecurityTxt pointer is emitted because no security.txt exists, and no AgentCard pointer is emitted
+  because neither agent-card path returned a JSON AgentCard. The site instead advertises its own
+  API discovery via the WordPress REST root at https://perfectday.com/wp-json/ (Link:
+  rel="https://api.w.org/"), which is the surface this repo's OpenAPI documents were derived from.
+hosts:
+- host: https://perfectday.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404, body: nginx text 404}
+  - {path: /.well-known/openid-configuration, status: 404, body: html}
+  - {path: /.well-known/oauth-authorization-server, status: 404, body: html}
+  - {path: /.well-known/oauth-protected-resource, status: 404, body: html}
+  - {path: /.well-known/api-catalog, status: 404, body: html}
+  - {path: /.well-known/ai-plugin.json, status: 404, body: html}
+  - {path: /.well-known/agent-card.json, status: 404, body: html}
+  - {path: /.well-known/agent.json, status: 404, body: html}
+  - {path: /.well-known/mcp.json, status: 404, body: html}
+  - {path: /.well-known/change-password, status: 404, body: html}
+  - {path: /llms.txt, status: 404, body: nginx text 404}
+alternate_discovery:
+- path: /wp-json/
+  status: 200
+  content_type: application/json
+  description: >-
+    WordPress REST API root discovery document — advertises 19 namespaces and 260 routes, including
+    wp/v2, wp-abilities/v1 and mcp.
+  file: ../openapi/_original/perfect-day-wp-json-root.json
+- path: /wp-json/wp/v2
+  status: 200
+  content_type: application/json
+  description: The wp/v2 namespace route index — 124 routes with full args/type/enum/default metadata.
+  file: ../openapi/_original/perfect-day-wp-json-wp-v2.json
+- path: /robots.txt
+  status: 200
+  sitemap: https://perfectday.com/sitemap_index.xml
+- path: /sitemap_index.xml
+  status: 200
+- path: /blog/feed/
+  status: 200
+  content_type: application/rss+xml
+namespaces_advertised:
+- oembed/1.0
+- wpe/cache-plugin/v1
+- wpe_sign_on_plugin/v1
+- eight29/v1
+- redirection/v1
+- cookieyes/v1
+- wordfence/v1
+- yoast/v1
+- duplicate-post/v1
+- wpt/v1
+- wp-rocket/v1
+- two-factor/1.0
+- bsf-core/v1
+- nps-survey/v1
+- mcp
+- wp/v2
+- wp-site-health/v1
+- wp-block-editor/v1
+- wp-abilities/v1

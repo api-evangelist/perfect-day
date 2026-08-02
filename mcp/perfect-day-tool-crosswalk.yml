@@ -1,0 +1,89 @@
+generated: '2026-08-02'
+method: derived
+source: mcp/perfect-day-mcp.yml + openapi/*.yml
+summary: >-
+  Perfect Day has both an MCP surface and OpenAPI contracts, and they sit on the SAME host — the
+  WordPress install behind perfectday.com. The MCP Adapter endpoint is auth-gated (anonymous
+  tools/list returns 401 rest_forbidden), so no tool NAME is public and nothing can be bound to an
+  operationId. Every binding below is therefore empty by evidence, not by omission. The REST side is
+  fully enumerated: 111 operations across 16 resource documents, derived from the route metadata
+  WordPress publishes for this site. This file exists to record the divergence honestly and to give
+  a later authenticated re-probe a place to land.
+surfaces:
+  openapi:
+    files:
+    - openapi/perfect-day-posts-openapi.yml
+    - openapi/perfect-day-news-openapi.yml
+    - openapi/perfect-day-success-stories-openapi.yml
+    - openapi/perfect-day-pages-openapi.yml
+    - openapi/perfect-day-search-openapi.yml
+    - openapi/perfect-day-media-openapi.yml
+    - openapi/perfect-day-categories-openapi.yml
+    - openapi/perfect-day-news-categories-openapi.yml
+    - openapi/perfect-day-success-story-categories-openapi.yml
+    - openapi/perfect-day-leader-categories-openapi.yml
+    - openapi/perfect-day-tags-openapi.yml
+    - openapi/perfect-day-comments-openapi.yml
+    - openapi/perfect-day-taxonomies-openapi.yml
+    - openapi/perfect-day-types-openapi.yml
+    - openapi/perfect-day-statuses-openapi.yml
+    - openapi/perfect-day-modals-openapi.yml
+    format: OpenAPI 3.1.0
+    runtime: live — https://perfectday.com/wp-json (anonymous reads verified 2026-08-02)
+    gated: false
+  graphql:
+    endpoint: null
+    note: no GraphQL surface published or discovered on any perfectday.com host
+  mcp:
+    servers:
+    - https://perfectday.com/wp-json/mcp/mcp-adapter-default-server
+    gated: true
+    note: anonymous tools/list returns 401 rest_forbidden; tool names and inputSchemas are not public
+crosswalk: []
+mcp_only:
+- tool: unknown
+  reason: >-
+    Tool list is auth-gated (401 on tools/list, 401 on /wp-json/wp-abilities/v1/abilities). Names,
+    descriptions and input schemas require authenticated introspection with a WordPress application
+    password. Recorded as unknown rather than guessed.
+rest_only:
+- capability: Blog posts
+  file: openapi/perfect-day-posts-openapi.yml
+  operations: [getPosts, getPostsId, createPosts, patchPostsId, deletePostsId, getPostsIdAutosaves,
+    createPostsIdAutosaves, getPostsParentAutosavesId, getPostsParentRevisions, getPostsParentRevisionsId,
+    deletePostsParentRevisionsId, createPostsId]
+- capability: Newsroom items (custom post type `news`)
+  file: openapi/perfect-day-news-openapi.yml
+  operations: [getNews, getNewsId, createNews, patchNewsId, deleteNewsId, getNewsParentRevisions]
+- capability: Partner success stories (custom post type `success_story`)
+  file: openapi/perfect-day-success-stories-openapi.yml
+  operations: [getSuccessStory, getSuccessStoryId, createSuccessStory, patchSuccessStoryId, deleteSuccessStoryId]
+- capability: Marketing and information pages
+  file: openapi/perfect-day-pages-openapi.yml
+  operations: [getPages, getPagesId, createPages, patchPagesId, deletePagesId]
+- capability: Site-wide content search
+  file: openapi/perfect-day-search-openapi.yml
+  operations: [getSearch]
+- capability: Media library
+  file: openapi/perfect-day-media-openapi.yml
+  operations: [getMedia, getMediaId, createMedia, patchMediaId, deleteMediaId]
+- capability: Taxonomies (categories, tags, news_category, success_story_category, leader_category)
+  files:
+  - openapi/perfect-day-categories-openapi.yml
+  - openapi/perfect-day-tags-openapi.yml
+  - openapi/perfect-day-news-categories-openapi.yml
+  - openapi/perfect-day-success-story-categories-openapi.yml
+  - openapi/perfect-day-leader-categories-openapi.yml
+  operations: [getCategories, getTags, getNewsCategory, getSuccessStoryCategory, getLeaderCategory]
+- capability: Metadata (taxonomies, types, statuses)
+  files:
+  - openapi/perfect-day-taxonomies-openapi.yml
+  - openapi/perfect-day-types-openapi.yml
+  - openapi/perfect-day-statuses-openapi.yml
+  operations: [getTaxonomies, getTypes, getStatuses]
+coverage:
+  tools_named: 0
+  tools_bound: 0
+  mcp_only: 0
+  rest_operations_total: 111
+  rest_operations_with_tool: 0

@@ -1,0 +1,34 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/perfect-day-categories-openapi.yml, openapi/perfect-day-comments-openapi.yml,
+  openapi/perfect-day-leader-categories-openapi.yml, openapi/perfect-day-media-openapi.yml,
+  openapi/perfect-day-modals-openapi.yml, openapi/perfect-day-news-categories-openapi.yml, openapi/perfect-day-news-openapi.yml,
+  openapi/perfect-day-pages-openapi.yml, openapi/perfect-day-posts-openapi.yml, openapi/perfect-day-search-openapi.yml,
+  openapi/perfect-day-statuses-openapi.yml, openapi/perfect-day-success-stories-openapi.yml
+  ...
+summary:
+  types:
+  - http
+schemes:
+- name: applicationPassword
+  type: http
+  scheme: basic
+  description: WordPress application passwords (HTTP Basic). Required for all write operations;
+    anonymous requests to write routes return HTTP 401 rest_forbidden.
+  sources:
+  - openapi/perfect-day-categories-openapi.yml
+  - openapi/perfect-day-comments-openapi.yml
+  - openapi/perfect-day-leader-categories-openapi.yml
+  - openapi/perfect-day-media-openapi.yml
+  - openapi/perfect-day-modals-openapi.yml
+  - openapi/perfect-day-news-categories-openapi.yml
+  - openapi/perfect-day-news-openapi.yml
+  - openapi/perfect-day-pages-openapi.yml
+  - openapi/perfect-day-posts-openapi.yml
+  - openapi/perfect-day-search-openapi.yml
+  - openapi/perfect-day-statuses-openapi.yml
+  - openapi/perfect-day-success-stories-openapi.yml
+  - openapi/perfect-day-success-story-categories-openapi.yml
+  - openapi/perfect-day-tags-openapi.yml
+  - openapi/perfect-day-taxonomies-openapi.yml
+  - openapi/perfect-day-types-openapi.yml

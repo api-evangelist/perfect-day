@@ -1,0 +1,54 @@
+generated: '2026-08-02'
+method: derived
+source: https://perfectday.com/wp-json/ + live probes on 2026-08-02
+scope: >-
+  Versioning, deprecation and operational-transparency posture for the WordPress REST API behind
+  perfectday.com — the only machine-readable surface Perfect Day operates. Perfect Day publishes no
+  developer program, so there is no API versioning policy, no deprecation policy, no SLA and no
+  status page of its own. Absences below are recorded honestly and no StatusPage or Deprecation
+  pointer is emitted.
+versioning:
+  scheme: namespace-in-path
+  current: wp/v2
+  base: https://perfectday.com/wp-json
+  discovery: https://perfectday.com/wp-json/
+  namespaces_advertised: 19
+  policy_url: null
+  policy_note: >-
+    The version is inherited from WordPress core (the `wp/v2` namespace), not from a versioning
+    policy Perfect Day publishes. Upstream policy lives at https://developer.wordpress.org/rest-api/.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    No Deprecation or Sunset response headers (RFC 8594) were observed on any probed route, and no
+    deprecation policy page exists. No Deprecation pointer is emitted.
+deprecated_operations: []
+deprecated_operations_note: >-
+  No route in the published route metadata is flagged deprecated.
+sla:
+  url: null
+  uptime_target: null
+  note: No SLA is published; this is a marketing site's content API, not a commercial API product.
+status_page: null
+status_page_note: >-
+  status.perfectday.com does not resolve, and no status page is linked from the site. No StatusPage
+  pointer is emitted.
+changelog:
+  url: null
+  note: >-
+    No API changelog exists. Company news is published as editorial content at
+    https://perfectday.com/newsroom/ (103 items, addressable via the `news` custom post type) and
+    https://perfectday.com/blog/ (71 posts, RSS at https://perfectday.com/blog/feed/); neither is an
+    API changelog, so no ChangeLog pointer is emitted.
+infrastructure:
+  platform: WordPress
+  host: WP Engine (x-cacheable / x-cache / x-cache-group headers observed)
+  cdn: 'Cloudflare (server: cloudflare)'
+  tls_version: TLSv1.3
+  cert_expires: '2026-09-25'
+related:
+- conventions/perfect-day-conventions.yml
+- security/perfect-day-domain-security.yml
+- conformance/perfect-day-conformance.yml

@@ -1,0 +1,46 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Perfect Day (success_story)
+  version: 1.0.0
+extends: openapi/perfect-day-success-stories-openapi.yml
+x-apievangelist:
+  generated: '2026-08-02'
+  method: generated
+  source: https://perfectday.com/wp-json/wp/v2
+  note: Overlay of API Evangelist enrichment metadata. The underlying OpenAPI in openapi/ was itself derived from
+    the route metadata WordPress publishes for perfectday.com; this overlay adds provenance and cross-artifact links
+    without mutating it.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: perfect-day
+    x-apievangelist-provider-name: Perfect Day
+    x-apievangelist-resource: success_story
+    x-apievangelist-resource-description: Partner and customer case studies.
+    x-apievangelist-surface: WordPress REST API (wp/v2) behind perfectday.com
+    x-apievangelist-product-api: false
+    x-apievangelist-product-api-note: Perfect Day is a precision-fermentation food-ingredient company and publishes
+      no developer/product API. This is its site content API.
+    x-apievangelist-enriched: '2026-08-02'
+- target: $.info
+  update:
+    x-apievangelist-artifacts:
+      authentication: authentication/perfect-day-authentication.yml
+      conventions: conventions/perfect-day-conventions.yml
+      errors: errors/perfect-day-problem-types.yml
+      data_model: data-model/perfect-day-data-model.yml
+      lifecycle: lifecycle/perfect-day-lifecycle.yml
+      conformance: conformance/perfect-day-conformance.yml
+      well_known: well-known/perfect-day-well-known.yml
+      mcp: mcp/perfect-day-mcp.yml
+      skills: skills/_index.yml
+      domain_security: security/perfect-day-domain-security.yml
+- target: $.servers[0]
+  update:
+    x-apievangelist-verified: '2026-08-02'
+    x-apievangelist-anonymous-read: true
+- target: $.tags[?(@.name=='success_story')]
+  update:
+    externalDocs:
+      description: WordPress REST API reference for this resource type
+      url: https://developer.wordpress.org/rest-api/reference/

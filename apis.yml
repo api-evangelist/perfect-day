@@ -1,7 +1,18 @@
 aid: perfect-day
 name: Perfect Day
-description: 'Perfect Day is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Perfect Day is a Berkeley, California food-technology company, founded in 2014, that makes
+  animal-free dairy proteins with precision fermentation. Rather than farming cows, Perfect Day
+  ferments microflora carrying milk's protein-coding genes to produce ProFerm, a non-animal whey
+  protein with no lactose, cholesterol, hormones or antibiotics, which it sells business-to-business
+  to consumer brands making ice cream, cream cheese, milk, yogurt, protein powders and bakery
+  products. The company is a member of the Precision Fermentation Alliance. Perfect Day publishes no
+  product or developer API; the single machine-readable surface it operates is the WordPress REST
+  API (wp/v2) behind perfectday.com, which exposes anonymous read access to its blog posts, newsroom
+  items, success stories, pages, media, taxonomies and site search, plus authenticated write
+  operations via WordPress application passwords. This profile was enriched by the API Evangelist
+  pipeline from that live surface.
+image: https://perfectday.com/wp-content/uploads/2022/01/social-share-image.jpg
 url: https://raw.githubusercontent.com/api-evangelist/perfect-day/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
@@ -12,7 +23,289 @@ created: '2026-08-02'
 modified: '2026-08-02'
 tags:
 - Company
-apis: []
+- Food Technology
+- Precision Fermentation
+- Alternative Protein
+- Ingredients
+- Sustainability
+- Biotechnology
+- Consumer Packaged Goods
+- Content API
+- WordPress
+apis:
+- aid: perfect-day:perfect-day-posts-api
+  name: Perfect Day posts API
+  description: >-
+    The WordPress REST `posts` resource behind perfectday.com — 71 published blog posts, with
+    collection, single-item, revision and autosave routes. Read access is anonymous; writes require
+    a WordPress application password.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - posts
+  - blog
+  - content
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-posts-openapi.yml
+  - type: Overlay
+    url: overlays/perfect-day-posts-overlay.yaml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+- aid: perfect-day:perfect-day-news-api
+  name: Perfect Day news API
+  description: >-
+    The `news` custom post type behind the Perfect Day newsroom — 103 items covering partner
+    launches, regulatory milestones and company announcements. Read access is anonymous.
+  humanURL: https://perfectday.com/wp-json/wp/v2/news
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - news
+  - newsroom
+  - content
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-news-openapi.yml
+  - type: Overlay
+    url: overlays/perfect-day-news-overlay.yaml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+- aid: perfect-day:perfect-day-success-stories-api
+  name: Perfect Day success stories API
+  description: >-
+    The `success_story` custom post type — Perfect Day's published partner/brand case studies,
+    classified by the `success_story_category` taxonomy. Read access is anonymous.
+  humanURL: https://perfectday.com/wp-json/wp/v2/success_story
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - success-stories
+  - case-studies
+  - content
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-success-stories-openapi.yml
+  - type: Overlay
+    url: overlays/perfect-day-success-stories-overlay.yaml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+- aid: perfect-day:perfect-day-pages-api
+  name: Perfect Day pages API
+  description: >-
+    The WordPress REST `pages` resource — 59 published marketing and information pages (ProFerm,
+    applications, process, impact, health, FAQs). Read access is anonymous.
+  humanURL: https://perfectday.com/wp-json/wp/v2/pages
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - pages
+  - content
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-pages-openapi.yml
+  - type: Overlay
+    url: overlays/perfect-day-pages-overlay.yaml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+- aid: perfect-day:perfect-day-search-api
+  name: Perfect Day search API
+  description: >-
+    The WordPress REST `search` resource — cross-content-type search across posts, pages, news and
+    success stories on perfectday.com. Read access is anonymous.
+  humanURL: https://perfectday.com/wp-json/wp/v2/search
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - search
+  - content
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-search-openapi.yml
+  - type: Overlay
+    url: overlays/perfect-day-search-overlay.yaml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+- aid: perfect-day:perfect-day-media-api
+  name: Perfect Day media API
+  description: >-
+    The WordPress REST `media` resource — the site's image and document library, including product
+    photography and press assets. Read access is anonymous; uploads require authentication.
+  humanURL: https://perfectday.com/wp-json/wp/v2/media
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - media
+  - assets
+  - content
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-media-openapi.yml
+  - type: Overlay
+    url: overlays/perfect-day-media-overlay.yaml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+- aid: perfect-day:perfect-day-categories-api
+  name: Perfect Day categories API
+  description: The WordPress REST `categories` taxonomy for blog posts on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/categories
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - categories
+  - taxonomy
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-categories-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+- aid: perfect-day:perfect-day-news-categories-api
+  name: Perfect Day news categories API
+  description: The `news_category` custom taxonomy that classifies Perfect Day newsroom items.
+  humanURL: https://perfectday.com/wp-json/wp/v2/news_category
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - news-categories
+  - taxonomy
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-news-categories-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+- aid: perfect-day:perfect-day-success-story-categories-api
+  name: Perfect Day success story categories API
+  description: The `success_story_category` custom taxonomy that classifies Perfect Day case studies.
+  humanURL: https://perfectday.com/wp-json/wp/v2/success_story_category
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - success-story-categories
+  - taxonomy
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-success-story-categories-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+- aid: perfect-day:perfect-day-leader-categories-api
+  name: Perfect Day leader categories API
+  description: The `leader_category` custom taxonomy that groups Perfect Day leadership profiles.
+  humanURL: https://perfectday.com/wp-json/wp/v2/leader_category
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - leader-categories
+  - taxonomy
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-leader-categories-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+- aid: perfect-day:perfect-day-tags-api
+  name: Perfect Day tags API
+  description: The WordPress REST `tags` taxonomy on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/tags
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - tags
+  - taxonomy
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-tags-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+- aid: perfect-day:perfect-day-comments-api
+  name: Perfect Day comments API
+  description: The WordPress REST `comments` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/comments
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - comments
+  - content
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-comments-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+- aid: perfect-day:perfect-day-taxonomies-api
+  name: Perfect Day taxonomies API
+  description: >-
+    The WordPress REST `taxonomies` resource — enumerates the seven taxonomies registered on
+    perfectday.com, including the custom news, success-story and leader taxonomies.
+  humanURL: https://perfectday.com/wp-json/wp/v2/taxonomies
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - taxonomies
+  - metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-taxonomies-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+- aid: perfect-day:perfect-day-types-api
+  name: Perfect Day types API
+  description: >-
+    The WordPress REST `types` resource — enumerates the content types registered on perfectday.com,
+    including the news, success_story and modal custom post types.
+  humanURL: https://perfectday.com/wp-json/wp/v2/types
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - types
+  - metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-types-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+- aid: perfect-day:perfect-day-statuses-api
+  name: Perfect Day statuses API
+  description: The WordPress REST `statuses` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/statuses
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - statuses
+  - metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-statuses-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-modals-api
+  name: Perfect Day modals API
+  description: The `modal` custom post type used for site interstitials on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/modal
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - modals
+  - content
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-modals-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +313,67 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
+  url: https://perfectday.com/
+- type: Documentation
+  url: https://perfectday.com/wp-json/
+- type: APIReference
+  url: https://developer.wordpress.org/rest-api/reference/
+- type: Blog
+  url: https://perfectday.com/blog/
+- type: BlogRSS
+  url: https://perfectday.com/blog/feed/
+- type: Newsroom
+  url: https://perfectday.com/newsroom/
+- type: Support
+  url: https://perfectday.com/contact-us/
+- type: FAQ
+  url: https://perfectday.com/faqs/
+- type: TermsOfService
+  url: https://perfectday.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://perfectday.com/privacy-policy/
+- type: CodeOfConduct
+  url: https://perfectday.com/codes-of-conduct-supplier-responsibility/
+- type: Patents
+  url: https://perfectday.com/patents/
+- type: Careers
+  url: https://perfectday.com/careers/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/perfectday/
+- type: Twitter
+  url: https://twitter.com/perfectdayfoods
+- type: Facebook
+  url: https://www.facebook.com/perfectdayfoods
+- type: Instagram
+  url: https://www.instagram.com/perfectdayfoods/
+- type: SecondaryMarket
   url: https://forgeglobal.com/perfect-day_stock/
+- type: Authentication
+  url: authentication/perfect-day-authentication.yml
+- type: Conventions
+  url: conventions/perfect-day-conventions.yml
+- type: ErrorCatalog
+  url: errors/perfect-day-problem-types.yml
+- type: DataModel
+  url: data-model/perfect-day-data-model.yml
+- type: Lifecycle
+  url: lifecycle/perfect-day-lifecycle.yml
+- type: Conformance
+  url: conformance/perfect-day-conformance.yml
+- type: WellKnown
+  url: well-known/perfect-day-well-known.yml
+- type: MCPServer
+  url: mcp/perfect-day-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/perfect-day-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/perfect-day-llms.txt
+- type: DomainSecurity
+  url: security/perfect-day-domain-security.yml
+x-enrichment:
+  date: '2026-08-02'
+  status: enriched
+  artifacts_added: 39
+  pass: local-v1

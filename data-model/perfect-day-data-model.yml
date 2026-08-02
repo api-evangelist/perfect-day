@@ -1,0 +1,181 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/*.yml + live item payloads observed on https://perfectday.com/wp-json/wp/v2 on 2026-08-02
+scope: >-
+  Entity-relationship graph for the WordPress REST content API behind perfectday.com. Entities and
+  relationships were derived from the site's own route metadata and from live item payloads — every
+  field named below was observed in a real response. Perfect Day's business (ProFerm protein,
+  partners, applications) is NOT modelled here; only the content entities the API actually exposes.
+id_scheme:
+  style: integer
+  note: All content and taxonomy entities are identified by a WordPress integer ID. No id prefixes.
+entities:
+- name: post
+  route: /wp/v2/posts
+  spec: openapi/perfect-day-posts-openapi.yml
+  count_observed: 71
+  description: Editorial blog posts published at https://perfectday.com/blog/.
+  key_fields: [id, date, date_gmt, modified, slug, status, type, link, title, content, excerpt,
+    author, featured_media, categories, tags, meta, acf, featured_image, formatted_date, yoast_head]
+- name: news
+  route: /wp/v2/news
+  spec: openapi/perfect-day-news-openapi.yml
+  count_observed: 103
+  description: >-
+    Newsroom items — press coverage and company announcements. Custom post type. The `link` field
+    frequently points off-site to the publishing outlet rather than to perfectday.com.
+  key_fields: [id, date, modified, slug, status, type, link, title, content, featured_media,
+    news_category, acf, featured_image, formatted_date]
+- name: success_story
+  route: /wp/v2/success_story
+  spec: openapi/perfect-day-success-stories-openapi.yml
+  count_observed: 4
+  description: Partner / customer case studies. Custom post type.
+  key_fields: [id, date, modified, slug, status, type, title, content, featured_media,
+    success_story_category, acf, formatted_date]
+- name: page
+  route: /wp/v2/pages
+  spec: openapi/perfect-day-pages-openapi.yml
+  count_observed: 59
+  description: Marketing and information pages (ProFerm, applications, process, impact, health, FAQs).
+  key_fields: [id, date, modified, slug, status, type, link, title, content, excerpt, author,
+    featured_media, parent, menu_order, template]
+- name: modal
+  route: /wp/v2/modal
+  spec: openapi/perfect-day-modals-openapi.yml
+  count_observed: 1
+  description: Site interstitial/modal content. Custom post type.
+  key_fields: [id, slug, status, type, title, content]
+- name: media
+  route: /wp/v2/media
+  spec: openapi/perfect-day-media-openapi.yml
+  description: Attachment library — images and documents referenced by featured_media.
+  key_fields: [id, slug, type, title, source_url, media_type, mime_type, media_details, post]
+- name: category
+  route: /wp/v2/categories
+  spec: openapi/perfect-day-categories-openapi.yml
+  count_observed: 5
+  description: Core taxonomy classifying blog posts.
+  key_fields: [id, count, description, link, name, slug, taxonomy, parent, meta, acf]
+- name: tag
+  route: /wp/v2/tags
+  spec: openapi/perfect-day-tags-openapi.yml
+  count_observed: 0
+  description: Core post_tag taxonomy. Registered but currently unused on this site.
+  key_fields: [id, count, description, link, name, slug, taxonomy]
+- name: news_category
+  route: /wp/v2/news_category
+  spec: openapi/perfect-day-news-categories-openapi.yml
+  count_observed: 2
+  description: >-
+    Custom taxonomy classifying newsroom items. Observed term "Media Coverage" (slug media-coverage)
+    with 62 items.
+  key_fields: [id, count, description, link, name, slug, taxonomy, parent]
+- name: success_story_category
+  route: /wp/v2/success_story_category
+  spec: openapi/perfect-day-success-story-categories-openapi.yml
+  count_observed: 3
+  description: Custom taxonomy classifying success stories.
+  key_fields: [id, count, description, link, name, slug, taxonomy, parent]
+- name: leader_category
+  route: /wp/v2/leader_category
+  spec: openapi/perfect-day-leader-categories-openapi.yml
+  count_observed: 5
+  description: >-
+    Custom taxonomy grouping leadership profiles. Note the `leader` post type itself is not exposed
+    on a public REST route — only its taxonomy is.
+  key_fields: [id, count, description, link, name, slug, taxonomy, parent]
+- name: comment
+  route: /wp/v2/comments
+  spec: openapi/perfect-day-comments-openapi.yml
+  count_observed: 0
+  description: Comment resource. Registered; comment_status observed as "closed" on posts.
+  key_fields: [id, post, parent, author_name, date, content, status]
+- name: search_result
+  route: /wp/v2/search
+  spec: openapi/perfect-day-search-openapi.yml
+  description: Lightweight cross-type search projection.
+  key_fields: [id, title, url, type, subtype, _links]
+relationships:
+- from: post
+  to: category
+  kind: has_many
+  via: categories
+  evidence: 'observed: {"categories": [1, 18]} on /wp/v2/posts'
+- from: post
+  to: tag
+  kind: has_many
+  via: tags
+  evidence: 'observed: {"tags": []} on /wp/v2/posts'
+- from: post
+  to: media
+  kind: has_one
+  via: featured_media
+  evidence: 'observed: {"featured_media": 9421} on /wp/v2/posts'
+- from: post
+  to: user
+  kind: belongs_to
+  via: author
+  evidence: >-
+    observed {"author": 1}; note the /wp/v2/users route is NOT registered on this site (404
+    rest_no_route), so the author entity is not dereferenceable via the API. The denormalized
+    `the_author` string field ("wpdev") is returned instead.
+- from: news
+  to: news_category
+  kind: has_many
+  via: news_category
+  evidence: 'observed: {"news_category": [15]} on /wp/v2/news'
+- from: news
+  to: media
+  kind: has_one
+  via: featured_media
+  evidence: 'observed: {"featured_media": 10281} on /wp/v2/news'
+- from: success_story
+  to: success_story_category
+  kind: has_many
+  via: success_story_category
+  evidence: 'observed: {"success_story_category": [8]} on /wp/v2/success_story'
+- from: success_story
+  to: media
+  kind: has_one
+  via: featured_media
+  evidence: 'observed: {"featured_media": 0} (unset) on /wp/v2/success_story'
+- from: page
+  to: page
+  kind: belongs_to
+  via: parent
+  evidence: page hierarchy declared in the /wp/v2/pages route args
+- from: page
+  to: media
+  kind: has_one
+  via: featured_media
+  evidence: featured_media declared in the /wp/v2/pages route args
+- from: comment
+  to: post
+  kind: belongs_to
+  via: post
+  evidence: post parameter declared on the /wp/v2/comments route
+- from: media
+  to: post
+  kind: belongs_to
+  via: post
+  evidence: post parameter declared on the /wp/v2/media route
+- from: category
+  to: category
+  kind: belongs_to
+  via: parent
+  evidence: 'observed: {"parent": 0} on /wp/v2/categories'
+extensions:
+  acf:
+    description: >-
+      Advanced Custom Fields payloads are inlined on every content entity as an `acf` object/array.
+      Field shapes vary per post type and are not declared in the route metadata.
+  eight29_custom:
+    description: Site-builder (Eight29) custom block payload, inlined per item.
+  yoast_head:
+    description: Yoast SEO renders a full `yoast_head` HTML string and `yoast_head_json` object per item.
+render: null
+render_note: No subway/ or ERD visual has been produced for this repo.
+related:
+- openapi/perfect-day-posts-openapi.yml
+- conventions/perfect-day-conventions.yml

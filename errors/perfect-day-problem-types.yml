@@ -1,0 +1,59 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/*.yml + live error responses observed on https://perfectday.com/wp-json on 2026-08-02
+format: wordpress-rest-error
+rfc9457: false
+envelope:
+  media_type: application/json
+  fields:
+    code: Machine-readable error code string.
+    message: Human-readable error message.
+    data.status: HTTP status code, repeated in the body.
+  note: >-
+    Perfect Day's WordPress REST API does not emit application/problem+json and does not use RFC 9457
+    Problem Details. The flat WordPress error envelope below is what every failing request returns.
+    Only codes actually observed on this host, or declared by the site's own route metadata, are
+    listed — no generic WordPress error registry was imported.
+problems:
+- status: 401
+  code: rest_forbidden
+  title: Sorry, you are not allowed to do that.
+  observed: true
+  observed_at:
+  - https://perfectday.com/wp-json/wp/v2/settings
+  - https://perfectday.com/wp-json/wp-abilities/v1/abilities
+  - https://perfectday.com/wp-json/mcp/mcp-adapter-default-server
+  remediation: >-
+    Authenticate with a WordPress application password (HTTP Basic). All write operations and the
+    settings, abilities and MCP surfaces require it.
+- status: 404
+  code: rest_no_route
+  title: No route was found matching the URL and request method.
+  observed: true
+  observed_at:
+  - https://perfectday.com/wp-json/wp/v2/users
+  - https://perfectday.com/wp-json/mcp/v1
+  remediation: >-
+    Check the route index at https://perfectday.com/wp-json/wp/v2. Note that /wp/v2/users is not
+    registered on this site.
+- status: 400
+  code: rest_invalid_param
+  title: Invalid parameter(s).
+  observed: false
+  source: Declared by the args/enum/type metadata on every route in openapi/*.yml.
+  remediation: Send a value matching the parameter's declared type and enum in the OpenAPI document.
+- status: 403
+  code: rest_cannot_edit
+  title: Sorry, you are not allowed to edit this item.
+  observed: false
+  source: Declared for the authenticated write operations in openapi/*.yml.
+  remediation: The authenticated user needs the WordPress capability for the target resource.
+- status: 404
+  code: rest_post_invalid_id
+  title: Invalid post ID.
+  observed: false
+  source: Declared for single-item routes on post-type resources in openapi/*.yml.
+  remediation: Resolve the ID from the matching collection route first.
+related:
+- conventions/perfect-day-conventions.yml
+- authentication/perfect-day-authentication.yml
