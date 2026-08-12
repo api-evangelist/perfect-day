@@ -33,285 +33,558 @@ tags:
 - Content API
 - WordPress
 apis:
-- aid: perfect-day:perfect-day-posts-api
-  name: Perfect Day posts API
-  description: >-
-    The WordPress REST `posts` resource behind perfectday.com — 71 published blog posts, with
-    collection, single-item, revision and autosave routes. Read access is anonymous; writes require
-    a WordPress application password.
+- aid: perfect-day:perfect-day-categories-api
+  name: Perfect Day Categories API
+  description: WordPress REST `categories` resource on perfectday.com.
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
-  - posts
-  - blog
-  - content
+  - categories
   properties:
   - type: OpenAPI
-    url: openapi/perfect-day-posts-openapi.yml
-  - type: Overlay
-    url: overlays/perfect-day-posts-overlay.yaml
+    url: openapi/perfect-day-categories-api-openapi.yml
   - type: Documentation
     url: https://perfectday.com/wp-json/
   - type: APIReference
     url: https://developer.wordpress.org/rest-api/reference/posts/
-- aid: perfect-day:perfect-day-news-api
-  name: Perfect Day news API
-  description: >-
-    The `news` custom post type behind the Perfect Day newsroom — 103 items covering partner
-    launches, regulatory milestones and company announcements. Read access is anonymous.
-  humanURL: https://perfectday.com/wp-json/wp/v2/news
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - news
-  - newsroom
-  - content
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-news-openapi.yml
-  - type: Overlay
-    url: overlays/perfect-day-news-overlay.yaml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
   - type: APIReference
     url: https://developer.wordpress.org/rest-api/reference/
-- aid: perfect-day:perfect-day-success-stories-api
-  name: Perfect Day success stories API
-  description: >-
-    The `success_story` custom post type — Perfect Day's published partner/brand case studies,
-    classified by the `success_story_category` taxonomy. Read access is anonymous.
-  humanURL: https://perfectday.com/wp-json/wp/v2/success_story
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - success-stories
-  - case-studies
-  - content
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-success-stories-openapi.yml
-  - type: Overlay
-    url: overlays/perfect-day-success-stories-overlay.yaml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
-  - type: APIReference
-    url: https://developer.wordpress.org/rest-api/reference/
-- aid: perfect-day:perfect-day-pages-api
-  name: Perfect Day pages API
-  description: >-
-    The WordPress REST `pages` resource — 59 published marketing and information pages (ProFerm,
-    applications, process, impact, health, FAQs). Read access is anonymous.
-  humanURL: https://perfectday.com/wp-json/wp/v2/pages
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - pages
-  - content
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-pages-openapi.yml
-  - type: Overlay
-    url: overlays/perfect-day-pages-overlay.yaml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
   - type: APIReference
     url: https://developer.wordpress.org/rest-api/reference/pages/
-- aid: perfect-day:perfect-day-search-api
-  name: Perfect Day search API
-  description: >-
-    The WordPress REST `search` resource — cross-content-type search across posts, pages, news and
-    success stories on perfectday.com. Read access is anonymous.
-  humanURL: https://perfectday.com/wp-json/wp/v2/search
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - search
-  - content
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-search-openapi.yml
-  - type: Overlay
-    url: overlays/perfect-day-search-overlay.yaml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
   - type: APIReference
     url: https://developer.wordpress.org/rest-api/reference/search-results/
-- aid: perfect-day:perfect-day-media-api
-  name: Perfect Day media API
-  description: >-
-    The WordPress REST `media` resource — the site's image and document library, including product
-    photography and press assets. Read access is anonymous; uploads require authentication.
-  humanURL: https://perfectday.com/wp-json/wp/v2/media
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - media
-  - assets
-  - content
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-media-openapi.yml
-  - type: Overlay
-    url: overlays/perfect-day-media-overlay.yaml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
   - type: APIReference
     url: https://developer.wordpress.org/rest-api/reference/media/
-- aid: perfect-day:perfect-day-categories-api
-  name: Perfect Day categories API
-  description: The WordPress REST `categories` taxonomy for blog posts on perfectday.com.
-  humanURL: https://perfectday.com/wp-json/wp/v2/categories
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - categories
-  - taxonomy
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-categories-openapi.yml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
   - type: APIReference
     url: https://developer.wordpress.org/rest-api/reference/categories/
-- aid: perfect-day:perfect-day-news-categories-api
-  name: Perfect Day news categories API
-  description: The `news_category` custom taxonomy that classifies Perfect Day newsroom items.
-  humanURL: https://perfectday.com/wp-json/wp/v2/news_category
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - news-categories
-  - taxonomy
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-news-categories-openapi.yml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
-  - type: APIReference
-    url: https://developer.wordpress.org/rest-api/reference/
-- aid: perfect-day:perfect-day-success-story-categories-api
-  name: Perfect Day success story categories API
-  description: The `success_story_category` custom taxonomy that classifies Perfect Day case studies.
-  humanURL: https://perfectday.com/wp-json/wp/v2/success_story_category
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - success-story-categories
-  - taxonomy
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-success-story-categories-openapi.yml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
-  - type: APIReference
-    url: https://developer.wordpress.org/rest-api/reference/
-- aid: perfect-day:perfect-day-leader-categories-api
-  name: Perfect Day leader categories API
-  description: The `leader_category` custom taxonomy that groups Perfect Day leadership profiles.
-  humanURL: https://perfectday.com/wp-json/wp/v2/leader_category
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - leader-categories
-  - taxonomy
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-leader-categories-openapi.yml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
-  - type: APIReference
-    url: https://developer.wordpress.org/rest-api/reference/
-- aid: perfect-day:perfect-day-tags-api
-  name: Perfect Day tags API
-  description: The WordPress REST `tags` taxonomy on perfectday.com.
-  humanURL: https://perfectday.com/wp-json/wp/v2/tags
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - tags
-  - taxonomy
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-tags-openapi.yml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
   - type: APIReference
     url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
 - aid: perfect-day:perfect-day-comments-api
-  name: Perfect Day comments API
-  description: The WordPress REST `comments` resource on perfectday.com.
-  humanURL: https://perfectday.com/wp-json/wp/v2/comments
+  name: Perfect Day Comments API
+  description: WordPress REST `comments` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
   - comments
-  - content
   properties:
   - type: OpenAPI
-    url: openapi/perfect-day-comments-openapi.yml
+    url: openapi/perfect-day-comments-api-openapi.yml
   - type: Documentation
     url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
   - type: APIReference
     url: https://developer.wordpress.org/rest-api/reference/comments/
-- aid: perfect-day:perfect-day-taxonomies-api
-  name: Perfect Day taxonomies API
-  description: >-
-    The WordPress REST `taxonomies` resource — enumerates the seven taxonomies registered on
-    perfectday.com, including the custom news, success-story and leader taxonomies.
-  humanURL: https://perfectday.com/wp-json/wp/v2/taxonomies
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - taxonomies
-  - metadata
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-taxonomies-openapi.yml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
   - type: APIReference
     url: https://developer.wordpress.org/rest-api/reference/taxonomies/
-- aid: perfect-day:perfect-day-types-api
-  name: Perfect Day types API
-  description: >-
-    The WordPress REST `types` resource — enumerates the content types registered on perfectday.com,
-    including the news, success_story and modal custom post types.
-  humanURL: https://perfectday.com/wp-json/wp/v2/types
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-leader-category-api
+  name: Perfect Day Leader Category API
+  description: WordPress REST `leader_category` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
-  - types
-  - metadata
+  - leader_category
   properties:
   - type: OpenAPI
-    url: openapi/perfect-day-types-openapi.yml
+    url: openapi/perfect-day-leader-category-api-openapi.yml
   - type: Documentation
     url: https://perfectday.com/wp-json/
   - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
     url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-media-api
+  name: Perfect Day Media API
+  description: WordPress REST `media` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - media
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-media-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-modal-api
+  name: Perfect Day Modal API
+  description: WordPress REST `modal` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - modal
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-modal-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-news-api
+  name: Perfect Day News API
+  description: WordPress REST `news` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - news
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-news-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-news-category-api
+  name: Perfect Day News Category API
+  description: WordPress REST `news_category` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - news_category
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-news-category-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-pages-api
+  name: Perfect Day Pages API
+  description: WordPress REST `pages` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - pages
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-pages-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-posts-api
+  name: Perfect Day Posts API
+  description: WordPress REST `posts` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - posts
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-posts-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-search-api
+  name: Perfect Day Search API
+  description: WordPress REST `search` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - search
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-search-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
 - aid: perfect-day:perfect-day-statuses-api
-  name: Perfect Day statuses API
-  description: The WordPress REST `statuses` resource on perfectday.com.
-  humanURL: https://perfectday.com/wp-json/wp/v2/statuses
+  name: Perfect Day Statuses API
+  description: WordPress REST `statuses` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
   - statuses
-  - metadata
   properties:
   - type: OpenAPI
-    url: openapi/perfect-day-statuses-openapi.yml
+    url: openapi/perfect-day-statuses-api-openapi.yml
   - type: Documentation
     url: https://perfectday.com/wp-json/
   - type: APIReference
-    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
-- aid: perfect-day:perfect-day-modals-api
-  name: Perfect Day modals API
-  description: The `modal` custom post type used for site interstitials on perfectday.com.
-  humanURL: https://perfectday.com/wp-json/wp/v2/modal
-  baseURL: https://perfectday.com/wp-json
-  tags:
-  - modals
-  - content
-  properties:
-  - type: OpenAPI
-    url: openapi/perfect-day-modals-openapi.yml
-  - type: Documentation
-    url: https://perfectday.com/wp-json/
+    url: https://developer.wordpress.org/rest-api/reference/posts/
   - type: APIReference
     url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-success-story-api
+  name: Perfect Day Success Story API
+  description: WordPress REST `success_story` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - success_story
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-success-story-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-success-story-category-api
+  name: Perfect Day Success Story Category API
+  description: WordPress REST `success_story_category` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - success_story_category
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-success-story-category-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-tags-api
+  name: Perfect Day Tags API
+  description: WordPress REST `tags` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - tags
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-tags-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-taxonomies-api
+  name: Perfect Day Taxonomies API
+  description: WordPress REST `taxonomies` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - taxonomies
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-taxonomies-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
+- aid: perfect-day:perfect-day-types-api
+  name: Perfect Day Types API
+  description: WordPress REST `types` resource on perfectday.com.
+  humanURL: https://perfectday.com/wp-json/wp/v2/posts
+  baseURL: https://perfectday.com/wp-json
+  tags:
+  - types
+  properties:
+  - type: OpenAPI
+    url: openapi/perfect-day-types-api-openapi.yml
+  - type: Documentation
+    url: https://perfectday.com/wp-json/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/posts/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/pages/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/search-results/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/media/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/categories/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/tags/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/comments/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/taxonomies/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-types/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/post-statuses/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/perfect-day-media-overlay.yaml
 - type: Website
   url: https://perfectday.com/
 - type: Documentation
