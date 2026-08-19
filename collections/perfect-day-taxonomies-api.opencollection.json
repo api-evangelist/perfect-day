@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Perfect Day Content API () Taxonomies API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "taxonomies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /wp/v2/taxonomies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://perfectday.com/wp-json/wp/v2/taxonomies",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to taxonomies associated with a specific post type."
+              }
+            ]
+          },
+          "docs": "GET https://perfectday.com/wp-json/wp/v2/taxonomies — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2."
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/taxonomies/{taxonomy}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://perfectday.com/wp-json/wp/v2/taxonomies/:taxonomy",
+            "params": [
+              {
+                "name": "taxonomy",
+                "value": "",
+                "type": "path",
+                "description": "An alphanumeric identifier for the taxonomy."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET https://perfectday.com/wp-json/wp/v2/taxonomies/{taxonomy} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

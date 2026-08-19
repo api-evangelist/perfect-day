@@ -1,0 +1,503 @@
+openapi: 3.2.0
+info:
+  title: Perfect Day Content API () Categories API
+  version: wp/v2
+  description: Public content API for perfectday.com, served by the WordPress REST API `wp/v2` namespace. Perfect Day is a precision-fermentation food-ingredient company and publishes no product/developer API; this is the one machine-readable surface it operates. Read operations on this resource were verified to respond anonymously (HTTP 200) on 2026-08-02; write operations require authentication (WordPress application passwords). This document was DERIVED by the API Evangelist enrichment pipeline from the route metadata the server itself publishes at https://perfectday.com/wp-json/wp/v2 — no operations, parameters, enums or defaults were invented.
+  contact:
+    name: Perfect Day
+    url: https://perfectday.com/contact-us/
+  x-apievangelist-method: derived
+  x-apievangelist-source: https://perfectday.com/wp-json/wp/v2
+  x-apievangelist-generated: '2026-08-02'
+servers:
+- url: https://perfectday.com/wp-json
+  description: Perfect Day WordPress REST API
+security: []
+tags:
+- name: categories
+  description: WordPress REST `categories` resource on perfectday.com.
+paths:
+  /wp/v2/categories:
+    get:
+      operationId: getCategories
+      summary: GET /wp/v2/categories
+      description: GET https://perfectday.com/wp-json/wp/v2/categories — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
+      tags:
+      - categories
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        required: false
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+      - name: per_page
+        in: query
+        required: false
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 100
+      - name: search
+        in: query
+        required: false
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+      - name: exclude
+        in: query
+        required: false
+        description: Ensure result set excludes specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        required: false
+        description: Limit result set to specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: order
+        in: query
+        required: false
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+      - name: orderby
+        in: query
+        required: false
+        description: Sort collection by term attribute.
+        schema:
+          type: string
+          enum:
+          - id
+          - include
+          - name
+          - slug
+          - include_slugs
+          - term_group
+          - description
+          - count
+          default: name
+      - name: hide_empty
+        in: query
+        required: false
+        description: Whether to hide terms not assigned to any posts.
+        schema:
+          type: boolean
+          default: false
+      - name: parent
+        in: query
+        required: false
+        description: Limit result set to terms assigned to a specific parent.
+        schema:
+          type: integer
+      - name: post
+        in: query
+        required: false
+        description: Limit result set to terms assigned to a specific post.
+        schema:
+          type: integer
+      - name: slug
+        in: query
+        required: false
+        description: Limit result set to terms with one or more specific slugs.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '400':
+          description: Invalid request — a parameter failed validation (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or insufficient capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden — the authenticated user lacks the required capability.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found — no route matched, or the item does not exist (rest_no_route / rest_post_invalid_id).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: createCategories
+      summary: POST /wp/v2/categories
+      description: POST https://perfectday.com/wp-json/wp/v2/categories — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
+      tags:
+      - categories
+      parameters: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '400':
+          description: Invalid request — a parameter failed validation (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or insufficient capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden — the authenticated user lacks the required capability.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found — no route matched, or the item does not exist (rest_no_route / rest_post_invalid_id).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: HTML description of the term.
+                name:
+                  type: string
+                  description: HTML title for the term.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the term unique to its type.
+                parent:
+                  type: integer
+                  description: The parent term ID.
+                meta:
+                  type: object
+                  description: Meta fields.
+              required:
+              - name
+      security:
+      - applicationPassword: []
+      x-requires-authentication: true
+  /wp/v2/categories/{id}:
+    get:
+      operationId: getCategoriesId
+      summary: GET /wp/v2/categories/{id}
+      description: GET https://perfectday.com/wp-json/wp/v2/categories/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
+      tags:
+      - categories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique identifier for the term.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — a parameter failed validation (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or insufficient capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden — the authenticated user lacks the required capability.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found — no route matched, or the item does not exist (rest_no_route / rest_post_invalid_id).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: createCategoriesId
+      summary: POST /wp/v2/categories/{id}
+      description: POST https://perfectday.com/wp-json/wp/v2/categories/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
+      tags:
+      - categories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique identifier for the term.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — a parameter failed validation (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or insufficient capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden — the authenticated user lacks the required capability.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found — no route matched, or the item does not exist (rest_no_route / rest_post_invalid_id).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: HTML description of the term.
+                name:
+                  type: string
+                  description: HTML title for the term.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the term unique to its type.
+                parent:
+                  type: integer
+                  description: The parent term ID.
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      x-requires-authentication: true
+    patch:
+      operationId: patchCategoriesId
+      summary: PATCH /wp/v2/categories/{id}
+      description: PATCH https://perfectday.com/wp-json/wp/v2/categories/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
+      tags:
+      - categories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique identifier for the term.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — a parameter failed validation (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or insufficient capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden — the authenticated user lacks the required capability.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found — no route matched, or the item does not exist (rest_no_route / rest_post_invalid_id).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: HTML description of the term.
+                name:
+                  type: string
+                  description: HTML title for the term.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the term unique to its type.
+                parent:
+                  type: integer
+                  description: The parent term ID.
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      x-requires-authentication: true
+    delete:
+      operationId: deleteCategoriesId
+      summary: DELETE /wp/v2/categories/{id}
+      description: DELETE https://perfectday.com/wp-json/wp/v2/categories/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
+      tags:
+      - categories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique identifier for the term.
+        schema:
+          type: integer
+      - name: force
+        in: query
+        required: false
+        description: Required to be true, as terms do not support trashing.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — a parameter failed validation (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or insufficient capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden — the authenticated user lacks the required capability.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found — no route matched, or the item does not exist (rest_no_route / rest_post_invalid_id).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - applicationPassword: []
+      x-requires-authentication: true
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress REST API error envelope (not RFC 9457).
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: Repeated HTTP status code.
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress application passwords (HTTP Basic). Required for all write operations; anonymous requests to write routes return HTTP 401 rest_forbidden.

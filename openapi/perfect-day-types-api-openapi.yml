@@ -1,0 +1,150 @@
+openapi: 3.2.0
+info:
+  title: Perfect Day Content API () Types API
+  version: wp/v2
+  description: Public content API for perfectday.com, served by the WordPress REST API `wp/v2` namespace. Perfect Day is a precision-fermentation food-ingredient company and publishes no product/developer API; this is the one machine-readable surface it operates. Read operations on this resource were verified to respond anonymously (HTTP 200) on 2026-08-02; write operations require authentication (WordPress application passwords). This document was DERIVED by the API Evangelist enrichment pipeline from the route metadata the server itself publishes at https://perfectday.com/wp-json/wp/v2 — no operations, parameters, enums or defaults were invented.
+  contact:
+    name: Perfect Day
+    url: https://perfectday.com/contact-us/
+  x-apievangelist-method: derived
+  x-apievangelist-source: https://perfectday.com/wp-json/wp/v2
+  x-apievangelist-generated: '2026-08-02'
+servers:
+- url: https://perfectday.com/wp-json
+  description: Perfect Day WordPress REST API
+security: []
+tags:
+- name: types
+  description: WordPress REST `types` resource on perfectday.com.
+paths:
+  /wp/v2/types:
+    get:
+      operationId: getTypes
+      summary: GET /wp/v2/types
+      description: GET https://perfectday.com/wp-json/wp/v2/types — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
+      tags:
+      - types
+      parameters:
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '400':
+          description: Invalid request — a parameter failed validation (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or insufficient capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden — the authenticated user lacks the required capability.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found — no route matched, or the item does not exist (rest_no_route / rest_post_invalid_id).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /wp/v2/types/{type}:
+    get:
+      operationId: getTypesType
+      summary: GET /wp/v2/types/{type}
+      description: GET https://perfectday.com/wp-json/wp/v2/types/{type} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
+      tags:
+      - types
+      parameters:
+      - name: type
+        in: path
+        required: true
+        description: An alphanumeric identifier for the post type.
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — a parameter failed validation (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required or insufficient capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden — the authenticated user lacks the required capability.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found — no route matched, or the item does not exist (rest_no_route / rest_post_invalid_id).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress REST API error envelope (not RFC 9457).
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: Repeated HTTP status code.
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress application passwords (HTTP Basic). Required for all write operations; anonymous requests to write routes return HTTP 401 rest_forbidden.

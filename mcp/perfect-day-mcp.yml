@@ -3,16 +3,14 @@ method: probed
 source: https://perfectday.com/wp-json/mcp
 status: published
 public: false
-notes: >-
-  perfectday.com (WordPress, hosted on WP Engine behind Cloudflare) exposes a live Model Context
-  Protocol endpoint through the WordPress MCP Adapter. The `mcp` namespace is advertised in the
-  site's own REST discovery document at https://perfectday.com/wp-json/, and the server route was
-  confirmed reachable on 2026-08-02. Anonymous JSON-RPC `initialize` and `tools/list` calls both
-  return HTTP 401 (`rest_forbidden`), and the sibling WordPress Abilities API
-  (/wp-json/wp-abilities/v1/abilities) also returns 401, so the tool list could not be enumerated
-  anonymously and is deliberately left empty rather than guessed. This is infrastructure the
-  WordPress platform ships, not a product MCP server Perfect Day documents for third parties —
-  Perfect Day is a food-ingredient company with no developer program.
+notes: perfectday.com (WordPress, hosted on WP Engine behind Cloudflare) exposes a live Model Context
+  Protocol endpoint through the WordPress MCP Adapter. The `mcp` namespace is advertised in the site's
+  own REST discovery document at https://perfectday.com/wp-json/, and the server route was confirmed reachable
+  on 2026-08-02. Anonymous JSON-RPC `initialize` and `tools/list` calls both return HTTP 401 (`rest_forbidden`),
+  and the sibling WordPress Abilities API (/wp-json/wp-abilities/v1/abilities) also returns 401, so the
+  tool list could not be enumerated anonymously and is deliberately left empty rather than guessed. This
+  is infrastructure the WordPress platform ships, not a product MCP server Perfect Day documents for third
+  parties — Perfect Day is a food-ingredient company with no developer program.
 server:
   name: perfect-day-site
   transport: http
@@ -34,9 +32,8 @@ authentication:
   - request: GET /wp-json/wp-abilities/v1/abilities
     status: 401
     code: rest_forbidden
-  scheme: >-
-    WordPress application passwords (HTTP Basic). No OAuth authorization-server metadata is served —
-    /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource both return 404.
+  scheme: WordPress application passwords (HTTP Basic). No OAuth authorization-server metadata is served
+    — /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource both return 404.
 discovery:
 - path: /wp-json/
   status: 200
@@ -48,10 +45,16 @@ discovery:
   status: 200
   evidence: abilities, abilities/{name}, abilities/{name}/run, categories routes registered
 tools: []
-tools_note: >-
-  Not enumerable without credentials; no tool list is asserted. Re-run this probe with a WordPress
+tools_note: Not enumerable without credentials; no tool list is asserted. Re-run this probe with a WordPress
   application password to populate tools[] from the server's own tools/list response.
 related:
 - mcp/perfect-day-tool-crosswalk.yml
 - openapi/perfect-day-posts-openapi.yml
 - authentication/perfect-day-authentication.yml
+deployment:
+  mode: remote
+  endpoint: https://perfectday.com/wp-json/mcp/mcp-adapter-default-server
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census
