@@ -30,6 +30,17 @@ tags:
 - Sustainability
 - Biotechnology
 - Consumer Packaged Goods
+- content-api
+- WordPress
+tags_raw:
+- Company
+- Food Technology
+- Precision Fermentation
+- Alternative Protein
+- Ingredients
+- Sustainability
+- Biotechnology
+- Consumer Packaged Goods
 - Content API
 - WordPress
 apis:
@@ -39,6 +50,8 @@ apis:
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
+  - Categories
+  tags_raw:
   - categories
   properties:
   - type: OpenAPI
@@ -73,6 +86,8 @@ apis:
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
+  - Comments
+  tags_raw:
   - comments
   properties:
   - type: OpenAPI
@@ -106,7 +121,8 @@ apis:
   description: WordPress REST `leader_category` resource on perfectday.com.
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - leader_category
   properties:
   - type: OpenAPI
@@ -141,6 +157,8 @@ apis:
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
+  - Media
+  tags_raw:
   - media
   properties:
   - type: OpenAPI
@@ -209,6 +227,8 @@ apis:
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
+  - News
+  tags_raw:
   - news
   properties:
   - type: OpenAPI
@@ -243,6 +263,8 @@ apis:
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
+  - NewsCategory
+  tags_raw:
   - news_category
   properties:
   - type: OpenAPI
@@ -277,6 +299,8 @@ apis:
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
+  - Pages
+  tags_raw:
   - pages
   properties:
   - type: OpenAPI
@@ -311,6 +335,8 @@ apis:
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
+  - Posts
+  tags_raw:
   - posts
   properties:
   - type: OpenAPI
@@ -345,6 +371,8 @@ apis:
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
+  - Search
+  tags_raw:
   - search
   properties:
   - type: OpenAPI
@@ -379,6 +407,8 @@ apis:
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
+  - Status
+  tags_raw:
   - statuses
   properties:
   - type: OpenAPI
@@ -412,7 +442,8 @@ apis:
   description: WordPress REST `success_story` resource on perfectday.com.
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - success_story
   properties:
   - type: OpenAPI
@@ -446,7 +477,8 @@ apis:
   description: WordPress REST `success_story_category` resource on perfectday.com.
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - success_story_category
   properties:
   - type: OpenAPI
@@ -481,6 +513,8 @@ apis:
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
+  - Tags
+  tags_raw:
   - tags
   properties:
   - type: OpenAPI
@@ -549,6 +583,8 @@ apis:
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
   tags:
+  - Types
+  tags_raw:
   - types
   properties:
   - type: OpenAPI
