@@ -274,7 +274,8 @@ apis:
   description: WordPress REST `news_category` resource on perfectday.com.
   humanURL: https://perfectday.com/wp-json/wp/v2/posts
   baseURL: https://perfectday.com/wp-json
-  tags: []
+  tags:
+  - News Category
   tags_raw:
   - news_category
   properties:
