@@ -2,18 +2,11 @@
   "repo": "perfect-day",
   "feeds": [
     {
-      "source": "https://developer.wordpress.org/feed/",
-      "feed_url": "https://developer.wordpress.org/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "feed"
-    },
-    {
-      "source": "https://perfectday.com/blog/feed/",
+      "source": "https://perfectday.com/blog/",
       "feed_url": "https://perfectday.com/blog/feed/",
       "title": "",
       "saved": 0,
-      "method": "feed"
+      "method": "discovered"
     },
     {
       "source": "https://developer.wordpress.org/rest-api/reference/",
@@ -23,13 +16,20 @@
       "method": "discovered"
     },
     {
-      "source": "https://perfectday.com/blog/",
+      "source": "https://perfectday.com/blog/feed/",
       "feed_url": "https://perfectday.com/blog/feed/",
       "title": "",
       "saved": 0,
-      "method": "discovered"
+      "method": "feed"
+    },
+    {
+      "source": "https://developer.wordpress.org/feed/",
+      "feed_url": "https://developer.wordpress.org/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-08-30T22:33:40Z"
+  "fetched": "2026-09-06T19:17:18Z"
 }
