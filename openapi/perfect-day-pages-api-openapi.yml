@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Perfect Day Content API () Pages API
   version: wp/v2
-  description: Public content API for perfectday.com, served by the WordPress REST API `wp/v2` namespace. Perfect Day is a precision-fermentation food-ingredient company and publishes no product/developer API; this is the one machine-readable surface it operates. Read operations on this resource were verified to respond anonymously (HTTP 200) on 2026-08-02; write operations require authentication (WordPress application passwords). This document was DERIVED by the API Evangelist enrichment pipeline from the route metadata the server itself publishes at https://perfectday.com/wp-json/wp/v2 — no operations, parameters, enums or defaults were invented.
+  description: Public content API for perfectday.com, served by the WordPress REST API `wp/v2` namespace.
   contact:
     name: Perfect Day
     url: https://perfectday.com/contact-us/
@@ -14,7 +14,7 @@ servers:
   description: Perfect Day WordPress REST API
 security: []
 tags:
-- name: pages
+- name: Pages
   description: WordPress REST `pages` resource on perfectday.com.
 paths:
   /wp/v2/pages:
@@ -23,7 +23,7 @@ paths:
       summary: GET /wp/v2/pages
       description: GET https://perfectday.com/wp-json/wp/v2/pages — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: context
         in: query
@@ -274,7 +274,7 @@ paths:
       summary: POST /wp/v2/pages
       description: POST https://perfectday.com/wp-json/wp/v2/pages — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters: []
       responses:
         '200':
@@ -388,7 +388,7 @@ paths:
       summary: GET /wp/v2/pages/{id}
       description: GET https://perfectday.com/wp-json/wp/v2/pages/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: id
         in: path
@@ -455,7 +455,7 @@ paths:
       summary: POST /wp/v2/pages/{id}
       description: POST https://perfectday.com/wp-json/wp/v2/pages/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: id
         in: path
@@ -572,7 +572,7 @@ paths:
       summary: PATCH /wp/v2/pages/{id}
       description: PATCH https://perfectday.com/wp-json/wp/v2/pages/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: id
         in: path
@@ -689,7 +689,7 @@ paths:
       summary: DELETE /wp/v2/pages/{id}
       description: DELETE https://perfectday.com/wp-json/wp/v2/pages/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: id
         in: path
@@ -744,7 +744,7 @@ paths:
       summary: GET /wp/v2/pages/{id}/autosaves
       description: GET https://perfectday.com/wp-json/wp/v2/pages/{id}/autosaves — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: parent
         in: query
@@ -805,7 +805,7 @@ paths:
       summary: POST /wp/v2/pages/{id}/autosaves
       description: POST https://perfectday.com/wp-json/wp/v2/pages/{id}/autosaves — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: id
         in: path
@@ -923,7 +923,7 @@ paths:
       summary: GET /wp/v2/pages/{parent}/autosaves/{id}
       description: GET https://perfectday.com/wp-json/wp/v2/pages/{parent}/autosaves/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: parent
         in: path
@@ -985,7 +985,7 @@ paths:
       summary: GET /wp/v2/pages/{parent}/revisions
       description: GET https://perfectday.com/wp-json/wp/v2/pages/{parent}/revisions — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: parent
         in: path
@@ -1112,7 +1112,7 @@ paths:
       summary: GET /wp/v2/pages/{parent}/revisions/{id}
       description: GET https://perfectday.com/wp-json/wp/v2/pages/{parent}/revisions/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: parent
         in: path
@@ -1173,7 +1173,7 @@ paths:
       summary: DELETE /wp/v2/pages/{parent}/revisions/{id}
       description: DELETE https://perfectday.com/wp-json/wp/v2/pages/{parent}/revisions/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: parent
         in: path

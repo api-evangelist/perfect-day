@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Perfect Day Content API () News Category API
   version: wp/v2
-  description: Public content API for perfectday.com, served by the WordPress REST API `wp/v2` namespace. Perfect Day is a precision-fermentation food-ingredient company and publishes no product/developer API; this is the one machine-readable surface it operates. Read operations on this resource were verified to respond anonymously (HTTP 200) on 2026-08-02; write operations require authentication (WordPress application passwords). This document was DERIVED by the API Evangelist enrichment pipeline from the route metadata the server itself publishes at https://perfectday.com/wp-json/wp/v2 — no operations, parameters, enums or defaults were invented.
+  description: Public content API for perfectday.com, served by the WordPress REST API `wp/v2` namespace.
   contact:
     name: Perfect Day
     url: https://perfectday.com/contact-us/
@@ -14,7 +14,7 @@ servers:
   description: Perfect Day WordPress REST API
 security: []
 tags:
-- name: news_category
+- name: News Category
   description: WordPress REST `news_category` resource on perfectday.com.
 paths:
   /wp/v2/news_category:
@@ -23,7 +23,7 @@ paths:
       summary: GET /wp/v2/news_category
       description: GET https://perfectday.com/wp-json/wp/v2/news_category — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - news_category
+      - News Category
       parameters:
       - name: context
         in: query
@@ -168,7 +168,7 @@ paths:
       summary: POST /wp/v2/news_category
       description: POST https://perfectday.com/wp-json/wp/v2/news_category — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - news_category
+      - News Category
       parameters: []
       responses:
         '200':
@@ -236,7 +236,7 @@ paths:
       summary: GET /wp/v2/news_category/{id}
       description: GET https://perfectday.com/wp-json/wp/v2/news_category/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - news_category
+      - News Category
       parameters:
       - name: id
         in: path
@@ -291,7 +291,7 @@ paths:
       summary: POST /wp/v2/news_category/{id}
       description: POST https://perfectday.com/wp-json/wp/v2/news_category/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - news_category
+      - News Category
       parameters:
       - name: id
         in: path
@@ -360,7 +360,7 @@ paths:
       summary: PATCH /wp/v2/news_category/{id}
       description: PATCH https://perfectday.com/wp-json/wp/v2/news_category/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - news_category
+      - News Category
       parameters:
       - name: id
         in: path
@@ -429,7 +429,7 @@ paths:
       summary: DELETE /wp/v2/news_category/{id}
       description: DELETE https://perfectday.com/wp-json/wp/v2/news_category/{id} — derived from the route metadata WordPress publishes for this site at https://perfectday.com/wp-json/wp/v2.
       tags:
-      - news_category
+      - News Category
       parameters:
       - name: id
         in: path
