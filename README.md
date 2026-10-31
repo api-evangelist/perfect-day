@@ -64,59 +64,130 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Perfect Day is a Berkeley, California food-technology company, founded in 2014, that makes
-animal-free dairy proteins with precision fermentation. It ferments microflora carrying milk's
-protein-coding genes to produce **ProFerm**, a non-animal whey protein with no lactose, cholesterol,
-hormones or antibiotics, and sells it business-to-business to consumer brands making ice cream,
-cream cheese, milk, yogurt, protein powders and bakery products.
+Perfect Day is a Berkeley, California food-technology company, founded in 2014, that makes animal-free dairy proteins with precision fermentation. Rather than farming cows, Perfect Day ferments microflora carrying milk's protein-coding genes to produce ProFerm, a non-animal whey protein with no lactose, cholesterol, hormones or antibiotics, which it sells business-to-business to consumer brands making ice cream, cream cheese, milk, yogurt, protein powders and bakery products. The company is a member of the Precision Fermentation Alliance. Perfect Day publishes no product or developer API; the single machine-readable surface it operates is the WordPress REST API (wp/v2) behind perfectday.com, which exposes anonymous read access to its blog posts, newsroom items, success stories, pages, media, taxonomies and site search, plus authenticated write operations via WordPress application passwords. This profile was enriched by the API Evangelist pipeline from that live surface.
 
-- Website: https://perfectday.com/
-- ProFerm: https://perfectday.com/proferm/
-- Newsroom: https://perfectday.com/newsroom/ · Blog: https://perfectday.com/blog/
-- Secondary-market listing (harvest source): https://forgeglobal.com/perfect-day_stock/
+**Areas:** Company · Food Technology · Precision Fermentation · Alternative Protein · Ingredients · Sustainability · Biotechnology · Consumer Packaged Goods · content-api · WordPress
 
-## API surface
+## Perfect Day on APIs.io
 
-**Perfect Day publishes no product or developer API.** No `api.`, `developer.` or `docs.`
-subdomain resolves, no GitHub organization exists, no client libraries are published on npm, PyPI or
-RubyGems, and no `/.well-known/` discovery document is served.
+Everything profiled for Perfect Day is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/perfect-day/](https://apis.io/providers/perfect-day/)** — or go straight to one of the APIs or properties below.
 
-The one machine-readable surface Perfect Day operates is the **WordPress REST API (`wp/v2`)** behind
-`https://perfectday.com/wp-json` — 19 namespaces, 260 routes, of which 124 are `wp/v2`. Anonymous
-read access was verified across 16 resources on 2026-08-02, including two Perfect Day-specific
-custom post types:
+### APIs (1)
 
-| Resource | Items | Notes |
-|---|---|---|
-| `news` | 103 | Newsroom — press coverage and announcements |
-| `posts` | 71 | Blog |
-| `pages` | 59 | Marketing and information pages |
-| `success_story` | 4 | Partner and brand case studies |
+- [Perfect Day Website (WordPress REST)](https://apis.io/apis/perfect-day/perfectday-com-website-wordpress-rest/) — The public WordPress REST API (wp-json) of the Perfect Day website at perfectday.com: the route index of the site's content management system, catalogued as…
 
-A WordPress **MCP Adapter** endpoint is also live at `/wp-json/mcp/mcp-adapter-default-server`, but
-anonymous `initialize` and `tools/list` both return `401 rest_forbidden` — it is platform
-infrastructure, not a documented product MCP server, and no tool list is asserted here.
+### Published properties
 
-## Artifacts
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Directory | What it holds |
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [perfect-day-site](https://apis.io/servers/perfect-day/perfect-day-site/)
+
+#### Collections (16)
+
+Postman and Open Collection request collections.
+
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-categories-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-comments-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-leader-category-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-media-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-modal-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-news-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-news-category-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-pages-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-posts-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-search-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-statuses-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-success-story-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-success-story-category-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-tags-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-taxonomies-api/)
+- [Moved to /providers/perfect-day/](https://apis.io/collections/perfect-day/open-perfect-day-types-api/)
+
+#### Overlays (6)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Perfect Day Media Overlay](https://apis.io/overlays/perfect-day/perfect-day-media-overlay/)
+- [Perfect Day News Overlay](https://apis.io/overlays/perfect-day/perfect-day-news-overlay/)
+- [Perfect Day Pages Overlay](https://apis.io/overlays/perfect-day/perfect-day-pages-overlay/)
+- [Perfect Day Posts Overlay](https://apis.io/overlays/perfect-day/perfect-day-posts-overlay/)
+- [Perfect Day Search Overlay](https://apis.io/overlays/perfect-day/perfect-day-search-overlay/)
+- [Perfect Day Success Stories Overlay](https://apis.io/overlays/perfect-day/perfect-day-success-stories-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Perfect Day Authentication](https://apis.io/security/perfect-day/perfect-day-authentication/)
+- [Perfect Day Domain Security](https://apis.io/security/perfect-day/perfect-day-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://perfectday.com/)
+- [Documentation](https://perfectday.com/wp-json/)
+- [API reference](https://developer.wordpress.org/rest-api/reference/)
+- [Support](https://perfectday.com/contact-us/)
+- [Blog](https://perfectday.com/blog/)
+- [Terms of service](https://perfectday.com/terms-of-use/)
+- [Privacy policy](https://perfectday.com/privacy-policy/)
+
+## API Evangelist rating
+
+**Kin Score 20.2** — emerging · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
 |---|---|
-| `openapi/` | 16 OpenAPI 3.1.0 documents, 111 operations, **derived** from the site's own route metadata (verbatim source in `openapi/_original/`) |
-| `overlays/` | OpenAPI Overlay 1.0.0 files carrying our enrichment metadata — the originals are never mutated |
-| `authentication/` | Auth profile (HTTP Basic / WordPress application passwords) |
-| `conventions/` | Pagination, filtering, field selection, error envelope, caching, versioning |
-| `errors/` | Error catalog — the flat WordPress envelope, not RFC 9457 |
-| `data-model/` | Entity-relationship graph derived from live payloads |
-| `lifecycle/` | Versioning posture; no deprecation policy, SLA or status page exists |
-| `conformance/` | Standards conformance, recorded honestly including the misses |
-| `well-known/` | `/.well-known/` probe results (all 404) plus the alternate discovery that does work |
-| `mcp/` | MCP server record (auth-gated) and the REST/MCP tool crosswalk |
-| `skills/` | Three packaged Agent Skills grounded in real operationIds |
-| `llms/` | Generated `llms.txt` (Perfect Day publishes none — `/llms.txt` returns 404) |
-| `security/` | Domain security probe (TLS 1.3, no HSTS, no DNSSEC, SPF + DMARC `reject`) |
+| Discoverability | 72.5 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 37.5 |
+| Access clarity | 21.1 |
 
-No `a2a/` agent card is present: `/.well-known/agent-card.json` and `/.well-known/agent.json` both
-return 404, and agent cards are never authored on a provider's behalf.
+**Agent readiness 6.3** — agent-aware
 
-Everything in this repo was either fetched from Perfect Day's live surface or derived from artifacts
-that were. Nothing was fabricated.
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/perfect-day/](https://apis.io/providers/perfect-day/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Perfect Day: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/perfect-day/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
